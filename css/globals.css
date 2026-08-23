@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +8,71 @@
 
 :root {
     --text-color: #ffffff;
+    --font-family: 'JetBrains Mono', monospace;
 }
 
 body {
+    font-family: var(--font-family);
+    background: linear-gradient(to bottom, #020111 0%, #191c33 100%);
+    min-height: 100vh;
+}
 
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 24px;
+    width: 100%;
+    padding: 16px;
+}
+
+.nav-links {
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+
+.nav-links li {
+    list-style: none;
+    position: relative;
+}
+
+.nav-links li::before,
+.nav-links li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ffffff;
+    transform-origin: left;
+    transition: transform 0s;
+}
+
+.nav-links li::before {
+    transform: scaleX(1);
+}
+
+.nav-links li::after {
+    transform: scaleX(0);
+}
+
+.nav-links li:hover::before {
+    transform: scaleX(0);
+}
+
+.nav-links li:hover::after {
+    transform: scaleX(1);
+    transition: transform 0.4s ease;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
 }
