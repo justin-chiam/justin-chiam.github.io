@@ -1,0 +1,24 @@
+.main {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2.5rem 1rem 8rem;
+}
+
+.main h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.main p {
+    color: var(--muted);
+}
+
+.main a {
+    color: var(--muted);
+}
+
+.main h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
