@@ -11,6 +11,9 @@
     --font-family: 'JetBrains Mono', monospace;
     --muted: #8a8a8f;
     --border: rgba(253, 253, 254, 0.1);
+    --slider-main-color: #000000;
+    --slider-secondary-color: #ffffff;
+    --transition-speed: 0.4s;
 }
 
 html,
@@ -22,7 +25,6 @@ body {
     font-family: var(--font-family);
     color: var(--text-color);
     background: linear-gradient(to bottom, #020111 0%, #191c33 100%);
-    /*background: linear-gradient(to bottom, #a9636b 0%, #f2b46a 100%);*/
     min-height: 100vh;
 }
 
@@ -86,4 +88,61 @@ body {
 .nav-links a {
     color: var(--text-color);
     text-decoration: none;
+}
+
+/* day/night toggle button */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.navbar .switch {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background-color: var(--slider-secondary-color);
+    transition: background-color var(--transition-speed);
+}
+
+.slider::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    width: 26px;
+    height:26px;
+    background-color: var(--slider-main-color);
+    transition: transform var(--transition-speed), background-color var(--transition-speed);
+}
+
+input:checked + .slider {
+    background-color: var(--slider-main-color);
+}
+
+input:checked + .slider::before {
+    transform: translateX(26px);
+    background-color: var(--slider-secondary-color);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
 }
