@@ -32,6 +32,11 @@ body.night-mode {
 html,
 body {
     overscroll-behavior: none;
+    scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+    display: none;
 }
 
 body {
