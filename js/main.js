@@ -8,31 +8,31 @@ function updateClock() {
     minute: '2-digit',
     hour12: false
   });
-
-  const formattedTime = timeString.replace(/\s/g, '').toUpperCase();
   
-  clockElement.textContent = `${formattedTime} AEST`;
+  clockElement.textContent = `${timeString} AEST`;
 }
 
-function applySavedTheme() {
-    const isNightMode = localStorage.getItem("theme") === "night";
-    
-    // Toggle night mode if saved and check button
-    document.body.classList.toggle("night-mode", isNightMode);
-    document.getElementById("theme-toggle").checked = isNightMode;
+function isNightTime() {
+  const hour = Number(new Date().toLocaleTimeString('en-AU', {
+    timeZone: 'Australia/Sydney',
+    hour: '2-digit',
+    hourCycle: 'h23'
+  }));
+
+  return hour < 5 || hour >= 19;
+}
+
+function applyTheme(isNight) {
+  document.body.classList.toggle("night-mode", isNight);
+  document.getElementById("theme-toggle").checked = !isNight;
 }
 
 function toggleTheme() {
-    const isNightMode = document.body.classList.toggle("night-mode");
-
-    // Set theme in local storage
-    if (isNightMode) {
-        localStorage.setItem("theme", "night");
-    } else {
-        localStorage.setItem("theme", "day");
-    }
+  applyTheme(!document.getElementById("theme-toggle").checked);
 }
 
-document.addEventListener("DOMContentLoaded", applySavedTheme);
+document.addEventListener("DOMContentLoaded", function () {
+  applyTheme(isNightTime());
+});
 updateClock();
 setInterval(updateClock, 1000);
