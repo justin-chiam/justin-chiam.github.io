@@ -30,9 +30,11 @@ body {
     align-items: center;
     justify-content: center;
     position: fixed;
-    bottom: 24px;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    padding: 16px;
+    padding: 24px 16px;
+    background-color: #191c33;
 }
 
 .nav-links {
